@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link type="image/x-icon" href="/img/2bdb608b-eddc-434d-b235-e95d2addc386.png" rel="shortcut icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Dev-Bash WRLD</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/home-de">
+                <img src="/img/2bdb608b-eddc-434d-b235-e95d2addc386.png" alt="Dev Bash Logo" width="38" height="38"
+                    class="d-inline-block align-top me-2">
+                Dev Bash
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Navigation umschalten">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home-de">Startseite</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/contact-de">Kontakt</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="dropbtn">Sprache wählen
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="/">Englisch</a>
+                                <a href="/home-ru">Russisch</a>
+                                <a href="/home-de">Deutsch</a>
+                                <a href="/home-az">Aserbaidschanisch</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="hero-title">Dev Bash</h1>
+            <p class="hero-subtitle">SOFTWARE & WEBENTWICKLUNG</p>
+            <a href="/contact-de" class="btn btn-cta shadow-lg" style="margin-left: -20px;">Kontaktieren Sie
+                uns</a>
+            <button class="hero hero-title btn btn-cta" style="margin-left: 10px; margin-top: 20px"
+                data-bs-toggle="modal" data-bs-target="#cartModal">
+                <i class="fas fa-shopping-cart"></i> Warenkorb
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container text-center">
+            <h2 class="mt-4 gradient-text hero-title">90% RABATT</h2>
+        </div>
+    </section>
+
+    <section class="container features">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-code feature-icon"></i>
+                    <h4>Webentwicklung</h4>
+                    <p>Moderne, schnelle und responsive Websites für Ihr Unternehmen. Von Landingpages bis zu komplexen
+                        Portalen.</p>
+                    <div class="price-tag">ab <b>€140</b></div>
+                    <button class="btn btn-cart" onclick="addToCart('Webentwicklung', 160)">In den Warenkorb</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-laptop-code feature-icon"></i>
+                    <h4>Softwarelösungen</h4>
+                    <p>Individuelle Software für Ihre Aufgaben. Automatisierung, Integrationen und Business-Tools.</p>
+                    <div class="price-tag">ab <b>€90</b></div>
+                    <button class="btn btn-cart" onclick="addToCart('Softwarelösungen', 100)">In den Warenkorb</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-cloud feature-icon"></i>
+                    <h4>Support & Weiterentwicklung</h4>
+                    <p>Technischer Support, Updates und kontinuierliche Weiterentwicklung Ihrer Projekte.</p>
+                    <div class="price-tag">ab <b>€40/Monat</b></div>
+                    <button class="btn btn-cart" onclick="addToCart('Support & Weiterentwicklung', 50)">In den
+                        Warenkorb</button>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center mt-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt feature-icon"></i>
+                    <h4>Mobile Apps</h4>
+                    <p>Cross-Plattform-Entwicklung für iOS und Android mit modernem Interface und optimaler UX.</p>
+                    <div class="price-tag">ab <b>€850</b></div>
+                    <button class="btn btn-cart" onclick="addToCart('Mobile Apps', 1000)">In den Warenkorb</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-search feature-icon"></i>
+                    <h4>SEO & Marketing</h4>
+                    <p>SEO-Optimierung, Analytics und Digital-Marketing für das Wachstum Ihres Online-Geschäfts.</p>
+                    <div class="price-tag">ab <b>€90/Monat</b></div>
+                    <button class="btn btn-cart" onclick="addToCart('SEO & Marketing', 100)">In den Warenkorb</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h4>Sicherheitsaudit</h4>
+                    <p>Umfassendes Sicherheitsaudit und Schutz Ihrer Web- und Softwareprojekte.</p>
+                    <div class="price-tag">ab <b>€170/Monat</b></div>
+                    <button class="btn btn-cart" onclick="addToCart('Sicherheitsaudit', 200)">In den Warenkorb</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content cart-modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel"><i class="fas fa-shopping-cart"></i> Ihr Warenkorb</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"
+                        style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cartItems" class="list-group mb-3"></ul>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold">Gesamt:</span>
+                        <span id="cartTotal" class="fs-5">$0</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Weiter einkaufen</button>
+                    <div id="paypal-button-container"></div>
+                    <div id="register-warning" class="text-danger mt-3" style="display:none; font-weight:600;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="container py-5" id="donate">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h2 class="mb-4 gradient-text">Unterstützen Sie das Projekt</h2>
+                <p class="mb-4">Wenn Ihnen Dev Bash gefällt, können Sie die Entwicklung des Projekts mit einer Spende unterstützen.
+                    Vielen Dank für Ihre Unterstützung!</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3 mb-3">
+                    <form id="donate-form"
+                        class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3 mb-3"
+                        onsubmit="return false;">
+                        <input type="number" min="1" step="1" class="form-control form-control-lg mb-2 mb-md-0"
+                            id="donate-amount" placeholder="Amount $"
+                            style="max-width:180px; font-size:1.3rem; border-radius: 1.5rem; border:2px solid #007bff;">
+                        <div id="paypal-donate-btn" style="min-width:180px;"></div>
+                    </form>
+                </div>
+                <div class="alert alert-info mt-3" style="display:none;" id="donate-info"></div>
+            </div>
+        </div>
+    </section>
+
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+        <div class="text-center mb-3">
+            <h3 class="gradient-text mb-2" style="font-weight:700; letter-spacing:0.5px;">
+                Helfen Sie den Bedürftigen</h3>
+            <p style="font-size:1.08rem; color:#ffffff; max-width:480px; margin:0 auto 10px auto;">
+
+                Jede Spende, die Sie tätigen, ist eine echte Unterstützung für Kranke und Menschen mit Behinderungen. Gemeinsam können wir die Welt zu einem freundlicheren Ort machen!
+            </p>
+        </div>
+        <input type="hidden" name="hosted_button_id" value="EBQKDPPNHD4AL" />
+        <div class="d-flex justify-content-center">
+            <button type="submit"
+                class="btn btn-primary btn-lg px-4 py-2 d-flex align-items-center justify-content-center"
+                style="border-radius:2rem; font-size:1.2rem; gap:0.5rem; box-shadow:0 2px 16px #007bff33; min-width:270px;">
+                <i class="fab fa-paypal fa-lg me-2"></i>
+                Donate via PayPal
+            </button>
+        </div>
+        <p class="text-center mt-3 mb-0" style="font-size:1.08rem; color:#ffffff;">
+            Alle Einnahmen kommen der humanitären Hilfe für Kranke und Menschen mit Behinderungen zugute
+        </p>
+    </form>
+
+    <!-- Testimonials Slider -->
+    <section class="container py-5 animated-section">
+        <h2 class="text-center mb-4 gradient-text">Kundenstimmen</h2>
+        <div id="testimonialsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="6000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="feature-card mx-auto" style="max-width:500px; min-height:180px;">
+                        <i class="fas fa-user-circle fa-2x mb-2"></i>
+                        <p>"Dev Bash hat unser Projekt vorzeitig abgeschlossen und unsere Erwartungen übertroffen. Sehr
+                            zu empfehlen!"</p>
+                        <div class="gradient-text">— Anna, Startup-CEO</div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="feature-card mx-auto" style="max-width:500px; min-height:180px;">
+                        <i class="fas fa-user-circle fa-2x mb-2"></i>
+                        <p>"Professionell, kreativ und immer erreichbar. Die Conversion-Rate der Website ist um 40%
+                            gestiegen!"</p>
+                        <div class="gradient-text">— Mike, Marketing-Leiter</div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="feature-card mx-auto" style="max-width:500px; min-height:180px;">
+                        <i class="fas fa-user-circle fa-2x mb-2"></i>
+                        <p>"Toller Support und transparenter Prozess. Wir vertrauen Dev Bash alle unsere IT-Aufgaben
+                            an."</p>
+                        <div class="gradient-text">— Olga, Geschäftsinhaberin</div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonialsCarousel"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" style="filter: invert(1);"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonialsCarousel"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" style="filter: invert(1);"></span>
+            </button>
+        </div>
+    </section>
+
+    <section class="container my-5 py-5 animated-section">
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4">
+                <h2 class="mb-3 gradient-text">Wie wir arbeiten</h2>
+                <ol class="work-steps">
+                    <li>Kostenlose Beratung und Anforderungsanalyse</li>
+                    <li>Design und Prototyping mit interaktiven Beispielen</li>
+                    <li>Entwicklung mit wöchentlichen Fortschrittsberichten</li>
+                    <li>Testing, Launch und Support</li>
+                    <li>Analyse und Optimierung nach dem Launch</li>
+                </ol>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../img/2bdb608b-eddc-434d-b235-e95d2addc386.png" alt="Prozess" width="200"
+                    class="img-fluid animated-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5 animated-section">
+        <h2 class="text-center mb-4 gradient-text">Unsere Technologien</h2>
+        <div class="row text-center">
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-html5 fa-3x tech-icon"></i>
+                <div>HTML5</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-css3-alt fa-3x tech-icon"></i>
+                <div>CSS3</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-js-square fa-3x tech-icon"></i>
+                <div>JavaScript</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-android fa-3x tech-icon"></i>
+                <div>Android</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-apple fa-3x tech-icon"></i>
+                <div>iOS</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-python fa-3x tech-icon"></i>
+                <div>Python</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-git-alt fa-3x tech-icon"></i>
+                <div>Git</div>
+            </div>
+            <div class="col-6 col-md-2 mb-4">
+                <i class="fab fa-figma fa-3x tech-icon"></i>
+                <div>Figma</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container why-us mb-5">
+        <h2 class="text-center mb-4 gradient-text">Warum wir?</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <ul>
+                    <li><i class="fas fa-check"></i> Erfahrenes Entwicklerteam</li>
+                    <li><i class="fas fa-check"></i> Individueller Ansatz für jeden Kunden</li>
+                    <li><i class="fas fa-check"></i> Moderne Technologien</li>
+                    <li><i class="fas fa-check"></i> Qualitäts- und Termingarantie</li>
+                    <li><i class="fas fa-check"></i> Flexible Preise und Zahlungsmethoden</li>
+                    <li><i class="fas fa-check"></i> Rund-um-die-Uhr-Support und Projektverfolgung</li>
+                    <li><i class="fas fa-check"></i> Transparenter Prozess und Berichterstattung</li>
+                    <li><i class="fas fa-check"></i> Kostenloses Projektaudit für Neukunden</li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="../img/2bdb608b-eddc-434d-b235-e95d2addc386.png" alt="Teamarbeit" width="180"
+                    class="img-fluid"
+                    style="filter: drop-shadow(0 0 24px #A367DC); animation: logoPulse 2s infinite alternate;">
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="modal fade" id="payAlertModal" tabindex="-1" aria-labelledby="payAlertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content cart-modal-content text-center">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title w-100 gradient-text" id="payAlertModalLabel"><i
+                            class="fas fa-credit-card"></i> Zahlung kommt bald!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"
+                        style="filter: invert(1);"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <i class="fas fa-spinner fa-spin fa-3x gradient-text"></i>
+                    </div>
+                    <p class="fs-5">Online-Zahlungsintegration (Stripe/PayPal/SberPay) ist bald verfügbar.<br>
+                        Kontaktieren Sie uns vorerst für manuelle Zahlungen!</p>
+                    <a href="./contact-de.html" class="btn btn-cta mt-2">Kontaktieren Sie uns</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <footer class="footer">
+        <div class="container">
+            <small>&copy; 2025 Dev Bash. Alle Rechte vorbehalten.</small>
+        </div>
+    </footer>
+    <script>
+        let cart = [];
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            new bootstrap.Modal(document.getElementById('cartModal')).show();
+        }
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, idx) => {
+                total += item.price;
+                cartItems.innerHTML += `<li class="list-group-item bg-dark text-light d-flex justify-content-between align-items-center">
+                    ${item.name} <span>$${item.price}</span>
+                    <button class="btn btn-sm btn-danger ms-2" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
+                </li>`;
+            });
+            cartTotal.textContent = `$${total}`;
+        }
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            updateCart();
+        }
+        function payNow() {
+            var payModal = new bootstrap.Modal(document.getElementById('payAlertModal'));
+            payModal.show();
+        }
+
+        function getCartTotalValue() {
+            return cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+        }
+
+
+        document.getElementById('cartModal').addEventListener('shown.bs.modal', function () {
+            document.getElementById('paypal-button-container').innerHTML = '';
+            if (cart.length > 0) {
+                paypal.Buttons({
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: getCartTotalValue()
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            alert('Zahlung erfolgreich, ' + details.payer.name.given_name + '!');
+                            cart = [];
+                            updateCart();
+                            bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+                        });
+                    }
+                }).render('#paypal-button-container');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // DONATE: Очистка поля после успешной оплаты, если пользователь вернулся
+            if (document.getElementById('donate-amount')) {
+                document.getElementById('donate-amount').value = '';
+                document.getElementById('donate-info').style.display = 'none';
+            }
+            const usernameP = document.getElementById("username_p");
+            const username = localStorage.getItem("username");
+            const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+            if (usernameP) {
+                if (isLoggedIn && username) {
+                    usernameP.textContent = username;
+                } else {
+                    usernameP.textContent = "Quest";
+                }
+            }
+        });
+
+        document.getElementById('cartModal').addEventListener('shown.bs.modal', function () {
+            document.getElementById('paypal-button-container').innerHTML = '';
+            if (cart.length > 0) {
+                paypal.Buttons({
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: getCartTotalValue()
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            alert('Zahlung erfolgreich, ' + details.payer.name.given_name + '!');
+                            cart = [];
+                            updateCart();
+                            bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+                        });
+                    }
+                }).render('#paypal-button-container');
+            }
+        });
+
+
+
+        function showCryptoModal() {
+            var modal = new bootstrap.Modal(document.getElementById('cryptoModal'));
+            modal.show();
+        }
+        function showCardModal() {
+            var modal = new bootstrap.Modal(document.getElementById('cardModal'));
+            modal.show();
+        }
+
+        // PayPal Donate Button Render
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.paypal) {
+                renderDonatePayPal();
+            } else {
+                var script = document.createElement('script');
+                script.src = "https://www.paypal.com/sdk/js?client-id=sb&currency=USD";
+                script.onload = renderDonatePayPal;
+                document.body.appendChild(script);
+            }
+        });
+
+        function renderDonatePayPal() {
+            paypal.Buttons({
+                style: { layout: 'horizontal', color: 'blue', shape: 'pill', label: 'donate', height: 45 },
+                createOrder: function (data, actions) {
+                    let amount = document.getElementById('donate-amount').value;
+                    if (!amount || isNaN(amount) || amount < 1) {
+                        document.getElementById('donate-amount').classList.add('is-invalid');
+                        return false;
+                    }
+                    document.getElementById('donate-amount').classList.remove('is-invalid');
+                    return actions.order.create({
+                        purchase_units: [{ amount: { value: amount } }]
+                    });
+                },
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
+                        document.getElementById('donate-info').style.display = 'block';
+                        document.getElementById('donate-info').textContent = 'Vielen Dank für Ihre Spende, ' + details.payer.name.given_name + '!';
+                        document.getElementById('donate-amount').value = '';
+                    });
+                },
+                onError: function (err) {
+                    document.getElementById('donate-info').style.display = 'block';
+                    document.getElementById('donate-info').textContent = 'Zahlungsfehler: ' + err;
+                }
+            }).render('#paypal-donate-btn');
+
+            document.getElementById('donate-amount').addEventListener('input', function () {
+                document.getElementById('donate-info').style.display = 'none';
+            });
+        }
+    </script>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=ASrX5eoMyqXS_abvLzW885ym0hj4tMURDikDfCE7dwkkv_0X5a4X0brZvfBSiKosBYnKv8PxEm4v4LrS"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+
+</html>
+</body>

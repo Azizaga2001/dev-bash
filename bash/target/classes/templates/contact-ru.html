@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | Dev Bash WRLD</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link type="image/x-icon" href="/img/2bdb608b-eddc-434d-b235-e95d2addc386.png" rel="shortcut icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/home-ru">
+                <img src="/img/2bdb608b-eddc-434d-b235-e95d2addc386.png" alt="Dev Bash Logo" width="38" height="38"
+                    class="d-inline-block align-top me-2">
+                Dev Bash
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home-ru">Главная</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/contact-ru">Контакты</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <button class="dropbtn">Выбрать язык
+                                <i class="fa-solid fa-arrow-down"></i>
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="/">Английский</a>
+                                <a href="/home-ru">Русский</a>
+                                <a href="/home-de">Немецкий</a>
+                                <a href="/home-az">Азербайджанский</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" style="margin-top: 56px;">
+        <div class="container text-center">
+            <h1 class="hero-title">Контактная информация</h1>
+            <p class="hero-subtitle">Свяжитесь с Dev Bash</p>
+        </div>
+    </header>
+    <div class="section contact mt-5" id="contact">
+        <ul class="contact-list">
+            <li class="contact-item" data-copy="+994(50)470-01-10">
+                <span class="contact-text">+994(50)470-01-10</span>
+            </li>
+            <li class="contact-item" data-copy="Azizovgul4@gmail.com">
+                <span class="contact-text">Azizovgul4@gmail.com</span>
+            </li>
+            <li class="contact-item" data-copy="@Hvdyu783n">
+                <span class="contact-text">@Hvdyu783n</span>
+            </li>
+        </ul>
+    </div>
+    <div id="copy-alert"></div>
+
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <small>&copy; 2025 Dev Bash. Все права защищены!</small>
+        </div>
+    </footer>
+
+
+    <script>
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('click', function () {
+                const text = this.getAttribute('data-copy');
+                if (!text) return;
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyAlert(`Copied: ${text}`);
+                });
+            });
+        });
+    </script>
+    <script>
+        let cart = [];
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCart();
+            new bootstrap.Modal(document.getElementById('cartModal')).show();
+        }
+        function updateCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, idx) => {
+                total += item.price;
+                cartItems.innerHTML += `<li class="list-group-item bg-dark text-light d-flex justify-content-between align-items-center">
+                    ${item.name} <span>$${item.price}</span>
+                    <button class="btn btn-sm btn-danger ms-2" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button>
+                </li>`;
+            });
+            cartTotal.textContent = `$${total}`;
+        }
+        function removeFromCart(idx) {
+            cart.splice(idx, 1);
+            updateCart();
+        }
+        function payNow() {
+            var payModal = new bootstrap.Modal(document.getElementById('payAlertModal'));
+            payModal.show();
+        }
+
+        function getCartTotalValue() {
+            return cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
+        }
+
+
+        document.getElementById('cartModal').addEventListener('shown.bs.modal', function () {
+            document.getElementById('paypal-button-container').innerHTML = '';
+            if (cart.length > 0) {
+                paypal.Buttons({
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: getCartTotalValue()
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            alert('Payment successful, ' + details.payer.name.given_name + '!');
+                            cart = [];
+                            updateCart();
+                            bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+                        });
+                    }
+                }).render('#paypal-button-container');
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // DONATE: Очистка поля после успешной оплаты, если пользователь вернулся
+            if (document.getElementById('donate-amount')) {
+                document.getElementById('donate-amount').value = '';
+                document.getElementById('donate-info').style.display = 'none';
+            }
+            const usernameP = document.getElementById("username_p");
+            const username = localStorage.getItem("username");
+            const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+            if (usernameP) {
+                if (isLoggedIn && username) {
+                    usernameP.textContent = username;
+                } else {
+                    usernameP.textContent = "Quest";
+                }
+            }
+        });
+
+        document.getElementById('cartModal').addEventListener('shown.bs.modal', function () {
+            document.getElementById('paypal-button-container').innerHTML = '';
+            if (cart.length > 0) {
+                paypal.Buttons({
+                    createOrder: function (data, actions) {
+                        return actions.order.create({
+                            purchase_units: [{
+                                amount: {
+                                    value: getCartTotalValue()
+                                }
+                            }]
+                        });
+                    },
+                    onApprove: function (data, actions) {
+                        return actions.order.capture().then(function (details) {
+                            alert('Payment successful, ' + details.payer.name.given_name + '!');
+                            cart = [];
+                            updateCart();
+                            bootstrap.Modal.getInstance(document.getElementById('cartModal')).hide();
+                        });
+                    }
+                }).render('#paypal-button-container');
+            }
+        });
+
+
+
+        function showCryptoModal() {
+            var modal = new bootstrap.Modal(document.getElementById('cryptoModal'));
+            modal.show();
+        }
+        function showCardModal() {
+            var modal = new bootstrap.Modal(document.getElementById('cardModal'));
+            modal.show();
+        }
+
+        // PayPal Donate Button Render
+        document.addEventListener("DOMContentLoaded", function () {
+            if (window.paypal) {
+                renderDonatePayPal();
+            } else {
+                var script = document.createElement('script');
+                script.src = "https://www.paypal.com/sdk/js?client-id=sb&currency=USD";
+                script.onload = renderDonatePayPal;
+                document.body.appendChild(script);
+            }
+        });
+
+        function renderDonatePayPal() {
+            paypal.Buttons({
+                style: { layout: 'horizontal', color: 'blue', shape: 'pill', label: 'donate', height: 45 },
+                createOrder: function (data, actions) {
+                    let amount = document.getElementById('donate-amount').value;
+                    if (!amount || isNaN(amount) || amount < 1) {
+                        document.getElementById('donate-amount').classList.add('is-invalid');
+                        return false;
+                    }
+                    document.getElementById('donate-amount').classList.remove('is-invalid');
+                    return actions.order.create({
+                        purchase_units: [{ amount: { value: amount } }]
+                    });
+                },
+                onApprove: function (data, actions) {
+                    return actions.order.capture().then(function (details) {
+                        document.getElementById('donate-info').style.display = 'block';
+                        document.getElementById('donate-info').textContent = 'Thank you for your donation, ' + details.payer.name.given_name + '!';
+                        document.getElementById('donate-amount').value = '';
+                    });
+                },
+                onError: function (err) {
+                    document.getElementById('donate-info').style.display = 'block';
+                    document.getElementById('donate-info').textContent = 'Payment error: ' + err;
+                }
+            }).render('#paypal-donate-btn');
+
+            document.getElementById('donate-amount').addEventListener('input', function () {
+                document.getElementById('donate-info').style.display = 'none';
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>
